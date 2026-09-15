@@ -14,7 +14,7 @@ This repository contains two scripts:
 
 1. **`esm2_embedding_merge.py`** — Loads ESM-2 protein language model embeddings (.pt files) and merges them with influenza metadata to produce a single CSV for downstream model training.
 
-2. **`family_transition_spillover_model.py`** — Trains and evaluates XGBoost classifiers for two spillover prediction tasks:
+2. **`protein_host_zoonotic_model.py`** — Trains and evaluates XGBoost classifiers for two spillover prediction tasks:
     - **Protein Host Tropism Model** — Classifies protein host tropism using ESM-2 protein embeddings as features. Evaluated using 10-fold Stratified Group K-Fold cross-validation with out-of-fold predictions.
     - **Zoonotic Risk Prediction Risk** — Classifies zoonotic spillover risk using per-segment family probability features derived from Model 1 outputs. Evaluated using 3-fold Stratified Group K-Fold cross-validation with out-of-fold predictions.
 
@@ -61,7 +61,7 @@ python esm2_embedding_merge.py \
 ### Protein Host Tropism Model — Load and/or Evaluate Pre-Trained Model (10 Iterations)
 
 ```bash
-python family_transition_spillover_model.py family_spillover \
+python protein_host_zoonotic_model.py family_spillover \
     -c /path/to/merged_esm2_embeddings.csv \
     -m /path/to/family_spillover_model.pkl \
     -o /path/to/output_dir \
@@ -71,7 +71,7 @@ python family_transition_spillover_model.py family_spillover \
 ### Zoonotic Risk Prediction Model — Train and/or Evaluate New Model (10 Iterations)
 
 ```bash
-python family_transition_spillover_model.py transition_spillover \
+python protein_host_zoonotic_model.py transition_spillover \
     -c /path/to/merged_esm2_embeddings_with_probs.csv \
     -m /path/to/transition_spillover_model.pkl \
     -o /path/to/output_dir \
