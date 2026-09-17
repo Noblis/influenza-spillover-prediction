@@ -216,7 +216,7 @@ For questions related to the methodology described in the manuscript, please ref
 ## Citation
 
 If you use this code, please cite the manuscript associated with this
-repository.
+repository and https://github.com/Noblis/influenza-spillover-prediction.
 
 ---
 
